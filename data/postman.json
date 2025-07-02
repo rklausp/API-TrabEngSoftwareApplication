@@ -1,0 +1,371 @@
+{
+  "info": {
+    "name": "TrabEngSoftwareApplication",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "CreateUser",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"name\",\r\n  \"username\": \"username\",\r\n  \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/users?name=User teste&username=teste123&password=password123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "User teste"
+                },
+                {
+                  "key": "username",
+                  "value": "teste123"
+                },
+                {
+                  "key": "password",
+                  "value": "password123"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUserByName",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/search-name?text=User",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                "search-name"
+              ],
+              "query": [
+                {
+                  "key": "text",
+                  "value": "User"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateUser",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteUser",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUserById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Task",
+      "item": [
+        {
+          "name": "CreateTask",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Finalizar relatório\",\r\n  \"description\": \"Preparar e revisar o relatório anual da empresa\",\r\n  \"priority\": \"MEDIUM\",\r\n  \"status\": \"TO_DO\",\r\n  \"responsibleId\": 1,\r\n  \"dueDate\": \"2025-07-10\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateTask",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Finalizar relatório Urgente\",\r\n  \"description\": \"Preparar e revisar o relatório anual da empresa\",\r\n  \"priority\": \"HIGH\",\r\n  \"status\": \"TO_DO\",\r\n  \"dueDate\": \"2025-07-11\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/tasks/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteTask",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tasks/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetTaskById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tasks/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUsersTasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tasks/assigned-to/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "assigned-to",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetByParameters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tasks/1/status/OPEN/priority/HIGH/dueBefore/2025-07-31",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "1",
+                "status",
+                "OPEN",
+                "priority",
+                "HIGH",
+                "dueBefore",
+                "2025-07-31"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comment",
+      "item": [
+        {
+          "name": "CreateComment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userId\": 1,\r\n  \"content\": \"Esse é o meu comentário sobre a tarefa.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/tasks/1/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "1",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ListTaskComments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tasks/1/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "1",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteComment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tasks/1/comments/10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "1",
+                "comments",
+                "10"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
