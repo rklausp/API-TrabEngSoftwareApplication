@@ -10,8 +10,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    List<Task> findByResponsible(Users users);
+    List<Task> findByResponsibleAndIsDeleted(Users users, boolean isDeleted);
 
-    List<Task> findByResponsibleAndStatusAndPriorityAndDueDateBefore(Users users, Status status, Priority priority, LocalDate dueBefore);
+    List<Task> findByResponsibleAndStatusAndPriorityAndDueDateBeforeAndIsDeleted(Users users, Status status, Priority priority, LocalDate dueBefore, boolean isDeleted);
 
 }

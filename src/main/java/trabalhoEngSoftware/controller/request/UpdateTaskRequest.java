@@ -5,7 +5,6 @@ import lombok.Setter;
 import trabalhoEngSoftware.domain.Priority;
 import trabalhoEngSoftware.domain.Status;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Getter @Setter

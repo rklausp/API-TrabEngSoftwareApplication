@@ -30,8 +30,7 @@ class CreateUserServiceTest {
     ArgumentCaptor<Users> userCaptor;
 
     @Test
-    @DisplayName("Deve criar usuário com sucesso")
-    void deveCriarUsuarioComSucesso() {
+    void shouldCreateUserSuccessfully() {
         CreateUserRequest request = new CreateUserRequest();
         request.setName("Maria");
         request.setUsername("maria123");

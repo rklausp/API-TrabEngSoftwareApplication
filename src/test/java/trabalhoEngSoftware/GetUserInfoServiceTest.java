@@ -22,32 +22,32 @@ class GetUserInfoServiceTest {
     private GetUserInfoService tested;
 
     @Test
-    void deveRetornarUserQuandoEncontrarPeloNome() {
+    void shouldReturnUserFoundByName() {
         String search = "joao";
 
         Users user = new Users();
         user.setId(1L);
         user.setName("Joao Silva");
 
-        when(userRepository.findByNameContainingIgnoreCase(search)).thenReturn(user);
+        when(userRepository.findByNameContainingIgnoreCaseAndIsDeleted(search, false)).thenReturn(user);
 
         UserResponse response = tested.search(search);
 
-        verify(userRepository).findByNameContainingIgnoreCase(search);
+        verify(userRepository).findByNameContainingIgnoreCaseAndIsDeleted(search, false);
         assertNotNull(response);
         assertEquals(user.getId(), response.getId());
         assertEquals(user.getName(), response.getName());
     }
 
     @Test
-    void deveRetornarNullQuandoNaoEncontrarUser() {
+    void shouldReturnNullWhenUserNotFound() {
         String search = "nome_inexistente";
 
-        when(userRepository.findByNameContainingIgnoreCase(search)).thenReturn(null);
+        when(userRepository.findByNameContainingIgnoreCaseAndIsDeleted(search, false)).thenReturn(null);
 
         UserResponse response = tested.search(search);
 
-        verify(userRepository).findByNameContainingIgnoreCase(search);
+        verify(userRepository).findByNameContainingIgnoreCaseAndIsDeleted(search, false);
         assertNull(response);
     }
 }

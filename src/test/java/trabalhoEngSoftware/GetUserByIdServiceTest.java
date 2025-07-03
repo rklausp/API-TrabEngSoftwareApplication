@@ -25,7 +25,7 @@ class GetUserByIdServiceTest {
     private GetUserByIdService tested;
 
     @Test
-    void deveRetornarUserQuandoEncontrar() {
+    void shouldReturnUserWhenFound() {
         Long userId = 1L;
         Users user = new Users();
         user.setId(userId);
@@ -42,7 +42,7 @@ class GetUserByIdServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoUserNaoEncontrado() {
+    void shouldRaiseExceptionWhenUserNotFound() {
         Long userId = 999L;
 
         when(userRepository.findById(userId)).thenReturn(Optional.empty());

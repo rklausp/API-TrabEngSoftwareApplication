@@ -1,7 +1,6 @@
 package trabalhoEngSoftware.controller.response;
 
 import lombok.*;
-import trabalhoEngSoftware.domain.Comment;
 import trabalhoEngSoftware.domain.Priority;
 import trabalhoEngSoftware.domain.Status;
 

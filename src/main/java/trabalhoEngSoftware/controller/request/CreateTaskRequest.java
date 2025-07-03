@@ -8,7 +8,6 @@ import trabalhoEngSoftware.domain.Status;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.List;
 
 @Getter @Setter
 public class CreateTaskRequest {

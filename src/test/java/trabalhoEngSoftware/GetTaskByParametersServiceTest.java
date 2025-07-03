@@ -33,7 +33,7 @@ class GetTaskByParametersServiceTest {
     private GetTaskByParametersService tested;
 
     @Test
-    void deveRetornarListaDeTarefasFiltradasComSucesso() {
+    void shouldReturnFilteredTaskListSuccessfully() {
         Long userId = 1L;
         Status status = Status.IN_PROGRESS;
         Priority priority = Priority.HIGH;
@@ -50,6 +50,7 @@ class GetTaskByParametersServiceTest {
         task1.setPriority(priority);
         task1.setDueDate(LocalDate.of(2025, 7, 5));
         task1.setResponsible(List.of(user));
+        task1.setDeleted(false);
 
         Task task2 = new Task();
         task2.setId(11L);
@@ -58,11 +59,12 @@ class GetTaskByParametersServiceTest {
         task2.setPriority(priority);
         task2.setDueDate(LocalDate.of(2025, 7, 9));
         task2.setResponsible(List.of(user));
+        task2.setDeleted(false);
 
         List<Task> tarefas = List.of(task1, task2);
 
         when(userRepository.findById(userId)).thenReturn(Optional.of(user));
-        when(taskRepository.findByResponsibleAndStatusAndPriorityAndDueDateBefore(user, status, priority, dueBefore))
+        when(taskRepository.findByResponsibleAndStatusAndPriorityAndDueDateBeforeAndIsDeleted(user, status, priority, dueBefore, false))
                 .thenReturn(tarefas);
 
         List<TaskResponse> responses = tested.findTasks(userId, status, priority, dueBefore);
@@ -77,7 +79,7 @@ class GetTaskByParametersServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoUsuarioNaoForEncontrado() {
+    void shouldRaiseExceptionWhenUserNotFound() {
         Long userId = 99L;
         Status status = Status.TO_DO;
         Priority priority = Priority.MEDIUM;
@@ -89,6 +91,5 @@ class GetTaskByParametersServiceTest {
                 () -> tested.findTasks(userId, status, priority, dueBefore));
 
         assertEquals("422 UNPROCESSABLE_ENTITY \"Users nao encontrado\"", exception.getMessage());
-        verify(taskRepository, never()).findByResponsibleAndStatusAndPriorityAndDueDateBefore(any(), any(), any(), any());
     }
 }

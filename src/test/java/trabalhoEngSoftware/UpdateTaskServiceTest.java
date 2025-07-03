@@ -39,7 +39,7 @@ class UpdateTaskServiceTest {
     ArgumentCaptor<Task> taskCaptor;
 
     @Test
-    void deveAtualizarTarefaComSucesso() {
+    void shouldUpdateTaskSuccessfully() {
         Long taskId = 1L;
         UpdateTaskRequest request = new UpdateTaskRequest();
         request.setTitle("Novo título");
@@ -76,7 +76,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoTarefaNaoEncontradaNaAtualizacao() {
+    void shouldRaiseExceptionWhenTaskNotFoundWhileUpdating() {
         when(taskRepository.findById(1L)).thenReturn(Optional.empty());
 
         UpdateTaskRequest request = new UpdateTaskRequest();
@@ -88,7 +88,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoUserNaoEncontradoNaAtualizacao() {
+    void shouldRaiseExceptionWhenUserNotFoundWhileUpdatingTask() {
         Long taskId = 1L;
         Long responsibleId = 2L;
 
@@ -109,7 +109,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveAdicionarResponsavelComSucesso() {
+    void shouldAddResponsibleSuccessfully() {
         Long taskId = 1L;
         Long userId = 2L;
 
@@ -134,7 +134,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveRemoverResponsavelComSucesso() {
+    void shouldRemoveResponsibleSuccessfully() {
         Long taskId = 1L;
         Long userId = 2L;
 
@@ -160,7 +160,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoAoRemoverResponsavelNaoExistente() {
+    void shouldRaiseExceptionWhenRemovingNotResponsibleForTask() {
         Long taskId = 1L;
         Long userId = 2L;
 
@@ -181,7 +181,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoTarefaNaoEncontradaNaAdicao() {
+    void shouldRaiseExceptionWhenTaskNotFoundWhenAddingResponsible() {
         when(taskRepository.findById(1L)).thenReturn(Optional.empty());
 
         ResponseStatusException exception = assertThrows(ResponseStatusException.class,
@@ -191,7 +191,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoUserNaoEncontradoNaAdicao() {
+    void shouldRaiseExceptionWhenUserNotFoundAddingResponsible() {
         Long taskId = 1L;
 
         Task task = new Task();
@@ -208,7 +208,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoTarefaNaoEncontradaNaRemocao() {
+    void shouldRaiseExceptionWhenTaskNotFoundRemovingResponsible() {
         when(taskRepository.findById(1L)).thenReturn(Optional.empty());
 
         ResponseStatusException exception = assertThrows(ResponseStatusException.class,
@@ -218,7 +218,7 @@ class UpdateTaskServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoUserNaoEncontradoNaRemocao() {
+    void shouldRaiseExceptionWhenUserNotFoundRemovingResponsible() {
         Long taskId = 1L;
 
         Task task = new Task();

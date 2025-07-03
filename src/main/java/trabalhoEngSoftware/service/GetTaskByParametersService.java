@@ -27,7 +27,7 @@ public class GetTaskByParametersService {
 
     public List<TaskResponse> findTasks(Long userId, Status status, Priority priority, LocalDate dueBefore){
         Users users = userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Users nao encontrado"));;
-        List<Task> tasks = taskRepository.findByResponsibleAndStatusAndPriorityAndDueDateBefore(users, status, priority, dueBefore);
+        List<Task> tasks = taskRepository.findByResponsibleAndStatusAndPriorityAndDueDateBeforeAndIsDeleted(users, status, priority, dueBefore, false);
         return tasks.stream().map(TaskMapper::toResponse).collect(Collectors.toList());
     }
 }

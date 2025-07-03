@@ -2,7 +2,6 @@ package trabalhoEngSoftware.mapper;
 
 import trabalhoEngSoftware.controller.request.CreateTaskRequest;
 import trabalhoEngSoftware.domain.Task;
-import trabalhoEngSoftware.domain.Users;
 
 import java.util.ArrayList;
 

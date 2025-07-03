@@ -40,8 +40,7 @@ class CreateTaskServiceTest {
     ArgumentCaptor<Users> userCaptor;
 
     @Test
-    @DisplayName("Deve criar tarefa com sucesso")
-    void deveCriarTarefaComSucesso() {
+    void shouldCreateTaskSuccessfully() {
         Long responsibleId = 1L;
         CreateTaskRequest request = new CreateTaskRequest();
         request.setResponsibleId(responsibleId);

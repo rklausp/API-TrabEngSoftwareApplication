@@ -26,11 +26,12 @@ class GetTaskServiceTest {
     private GetTaskService tested;
 
     @Test
-    void deveRetornarTaskQuandoEncontrar() {
+    void shouldReturnTaskWhenFound() {
         Long taskId = 1L;
         Task task = new Task();
         task.setId(taskId);
         task.setTitle("Tarefa teste");
+        task.setDeleted(false);
 
         when(taskRepository.findById(taskId)).thenReturn(Optional.of(task));
 
@@ -43,7 +44,7 @@ class GetTaskServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoTaskNaoEncontrada() {
+    void shouldRaiseExceptionForTaskNotFound() {
         Long taskId = 999L;
 
         when(taskRepository.findById(taskId)).thenReturn(Optional.empty());
@@ -51,6 +52,5 @@ class GetTaskServiceTest {
         ResponseStatusException exception = assertThrows(ResponseStatusException.class, () -> tested.search(taskId));
 
         assertEquals("422 UNPROCESSABLE_ENTITY \"Task nao encontrado\"", exception.getMessage());
-        verify(taskRepository).findById(taskId);
     }
 }

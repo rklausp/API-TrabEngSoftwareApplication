@@ -28,7 +28,7 @@ class UpdateUserServiceTest {
     ArgumentCaptor<Users> userCaptor;
 
     @Test
-    void deveAtualizarUsuarioComSucesso() {
+    void shouldUpdateUserSuccessfully() {
         Long userId = 1L;
         UserUpdateRequest request = new UserUpdateRequest();
         request.setName("Novo Nome");
@@ -61,7 +61,7 @@ class UpdateUserServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoUsuarioNaoExistir() {
+    void shouldRaiseExceptionWhenUserDoesNotExist() {
         Long userId = 999L;
         UserUpdateRequest request = new UserUpdateRequest();
 

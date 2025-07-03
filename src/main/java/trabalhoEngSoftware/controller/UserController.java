@@ -6,8 +6,6 @@ import trabalhoEngSoftware.controller.request.UserUpdateRequest;
 import trabalhoEngSoftware.controller.response.IdResponse;
 import trabalhoEngSoftware.controller.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import trabalhoEngSoftware.service.*;

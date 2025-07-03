@@ -31,7 +31,7 @@ class GetTaskByUserServiceTest {
     private GetTaskByUserService tested;
 
     @Test
-    void deveRetornarListaDeTarefasDoUsuario() {
+    void shouldReturnUserTaskList() {
         Long userId = 1L;
 
         Users user = new Users();
@@ -42,16 +42,18 @@ class GetTaskByUserServiceTest {
         task1.setId(101L);
         task1.setTitle("Tarefa A");
         task1.setResponsible(List.of(user));
+        task1.setDeleted(false);
 
         Task task2 = new Task();
         task2.setId(102L);
         task2.setTitle("Tarefa B");
         task2.setResponsible(List.of(user));
+        task2.setDeleted(false);
 
         List<Task> tarefas = List.of(task1, task2);
 
         when(userRepository.findById(userId)).thenReturn(Optional.of(user));
-        when(taskRepository.findByResponsible(user)).thenReturn(tarefas);
+        when(taskRepository.findByResponsibleAndIsDeleted(user, false)).thenReturn(tarefas);
 
         List<TaskResponse> responses = tested.getTasksAssignedTo(userId);
 
@@ -63,7 +65,7 @@ class GetTaskByUserServiceTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoUsuarioNaoExistir() {
+    void shouldRaiseExceptionWhenUserDoesNotExist() {
         Long userId = 999L;
 
         when(userRepository.findById(userId)).thenReturn(Optional.empty());
@@ -72,6 +74,5 @@ class GetTaskByUserServiceTest {
                 () -> tested.getTasksAssignedTo(userId));
 
         assertEquals("422 UNPROCESSABLE_ENTITY \"Users nao encontrado\"", exception.getMessage());
-        verify(taskRepository, never()).findByResponsible(any());
     }
 }

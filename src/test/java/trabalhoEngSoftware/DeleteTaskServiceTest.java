@@ -32,7 +32,7 @@ public class DeleteTaskServiceTest {
     private ArgumentCaptor<Task> taskCaptor;
 
     @Test
-    void deveMarcarTarefaComoDeletada() {
+    void shouldSetTaskAsDeletedSuccessfully() {
         Long taskId = 123L;
         Task task = new Task();
         task.setId(taskId);

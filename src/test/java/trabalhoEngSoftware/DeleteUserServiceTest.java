@@ -31,7 +31,7 @@ public class DeleteUserServiceTest {
     private DeleteUserService tested;
 
     @Test
-    public void deveMarcarUsuarioComoDeletado() {
+    public void shouldSetUserAsDeleted() {
         Long userId = 1L;
         Users user = new Users();
         user.setId(userId);
@@ -46,7 +46,7 @@ public class DeleteUserServiceTest {
     }
 
     @Test
-    public void deveLancarExcecao_QuandoUsuarioNaoExiste() {
+    public void shouldRaiseExceptionWhenUserDoesNotExist() {
         // Arrange
         Long userId = 999L;
         when(userRepository.findById(userId)).thenReturn(Optional.empty());

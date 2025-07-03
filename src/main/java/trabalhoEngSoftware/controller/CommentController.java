@@ -1,17 +1,13 @@
 package trabalhoEngSoftware.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import trabalhoEngSoftware.controller.request.CreateCommentRequest;
-import trabalhoEngSoftware.controller.request.UpdateTaskRequest;
 import trabalhoEngSoftware.controller.response.CommentResponse;
-import trabalhoEngSoftware.domain.Comment;
 import trabalhoEngSoftware.service.CommentService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/tasks/{taskId}/comments")

@@ -15,7 +15,7 @@ public class GetUserInfoService {
 
     public UserResponse search(String search) {
 
-        Users users = userRepository.findByNameContainingIgnoreCase(search);
+        Users users = userRepository.findByNameContainingIgnoreCaseAndIsDeleted(search, false);
         if(users == null){
             return null;
         }

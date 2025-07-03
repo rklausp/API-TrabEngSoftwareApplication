@@ -39,7 +39,7 @@ class CommentServiceTest {
     ArgumentCaptor<Comment> commentCaptor;
 
     @Test
-    void deveAdicionarComentarioComSucesso() {
+    void shouldAddCommentSuccessfully() {
         Long taskId = 1L;
         CreateCommentRequest request = new CreateCommentRequest();
         request.setUserId(10L);
@@ -71,7 +71,7 @@ class CommentServiceTest {
     }
 
     @Test
-    void deveRetornarListaDeCommentsQuandoExistirem() {
+    void shouldReturnCommentListWhenExists() {
         Long taskId = 1L;
 
         Users user = new Users();
@@ -81,6 +81,7 @@ class CommentServiceTest {
         Task task = new Task();
         task.setId(taskId);
         task.setTitle("Titulo teste");
+        task.setDeleted(false);
 
         Comment comment1 = new Comment();
         comment1.setId(100L);
@@ -96,7 +97,7 @@ class CommentServiceTest {
 
         List<Comment> listaComments = List.of(comment1, comment2);
 
-        when(commentRepository.findByTaskId(taskId)).thenReturn(listaComments);
+        when(commentRepository.findByTaskIdAndIsDeleted(taskId, false)).thenReturn(listaComments);
 
         List<CommentResponse> responses = tested.getCommentsByTaskId(taskId);
 
@@ -111,7 +112,7 @@ class CommentServiceTest {
     }
 
     @Test
-    void deveMarcarComentarioComoDeletado() {
+    void shouldSetCommentAsDeleted() {
         Long commentId = 42L;
 
         Comment comment = new Comment();

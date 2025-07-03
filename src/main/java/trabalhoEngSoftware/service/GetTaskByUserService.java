@@ -25,7 +25,7 @@ public class GetTaskByUserService {
 
     public List<TaskResponse> getTasksAssignedTo(Long userId){
         Users users = userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Users nao encontrado"));
-        List<Task> tasks = taskRepository.findByResponsible(users);
+        List<Task> tasks = taskRepository.findByResponsibleAndIsDeleted(users, false);
         return tasks.stream().map(TaskMapper::toResponse).collect(Collectors.toList());
     }
 }

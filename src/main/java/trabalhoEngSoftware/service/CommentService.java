@@ -46,7 +46,7 @@ public class CommentService {
     }
 
     public List<CommentResponse> getCommentsByTaskId(Long taskId) {
-        List<Comment> comments = commentRepository.findByTaskId(taskId);
+        List<Comment> comments = commentRepository.findByTaskIdAndIsDeleted(taskId,false);
         return comments.stream().map(CommentMapper::toResponse).collect(Collectors.toList());
     }
 
